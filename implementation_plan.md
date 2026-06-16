@@ -1,47 +1,54 @@
-# Implementation Plan - Expanding the SUKEN Grade 1 Ultimate Guide
+# Implementation Plan - Expanding Category-wise Mock Problems to 116
 
-This plan outlines the additions of 6 critical advanced math topics to the ultimate study guide [suken_1_ultimate_guide.md](file:///C:/Users/kazuo-suyama/.gemini/antigravity/brain/1ee1630b-7539-4f2d-ac0f-546be883fc58/suken_1_ultimate_guide.md) to ensure complete coverage of the Mathematics Certification Test Grade 1 (数検1級) syllabus.
+This plan outlines the approach to adding **4 new critical mathematical problem patterns** to the Mathematics Certification Test Grade 1 (数検1級) category-wise mock exams database, raising the total problem count from 112 to **116**. These additions will target advanced college-level calculations that frequently appear in the syllabus.
+
+## User Review Required
+
+> [!NOTE]
+> We will append 4 new custom problems to `EXTRA_PROBLEMS` in the parser script, bringing the total to **116** problems. All categorized markdown files will be automatically regenerated.
+
+### 4 New Proposed Problems
+
+1. **微分積分学 (Calculus)**: **積分記号下の微分 (Leibniz's Rule)**
+   - *Problem:* Evaluate the parametric improper integral $I(a) = \int_0^\infty \frac{e^{-x} \sin(ax)}{x} \,dx \quad (a \in \mathbb{R})$ using differentiation under the integral sign.
+   - *Target:* Advanced techniques in improper integration.
+
+2. **線形代数 (Linear Algebra)**: **複素内積空間とエルミート行列の対角化**
+   - *Problem:* Find the eigenvalues and orthonormal eigenvectors of the Hermitian matrix $A = \begin{pmatrix} 3 & 2i \\ -2i & 0 \end{pmatrix}$, and construct a unitary matrix $U$ that diagonalizes it.
+   - *Target:* Orthonormalization and diagonalization over the complex field.
+
+3. **代数学・整数論 (Algebra & Number Theory)**: **代数的数の最小多項式と拡大次数**
+   - *Problem:* Find the minimal polynomial of $\alpha = \sqrt{2} + \sqrt{3}$ over $\mathbb{Q}$, and determine the degree of the field extension $[\mathbb{Q}(\sqrt{2}, \sqrt{3}) : \mathbb{Q}]$.
+   - *Target:* Field theory and algebraic numbers.
+
+4. **確率・統計 (Probability & Statistics)**: **条件付き期待値と条件付き分散**
+   - *Problem:* For the joint density $f(x, y) = 2$ on $0 < y < x < 1$, find the conditional density $f_{X|Y}(x \mid y)$, the conditional expectation $E[X \mid Y = y]$, and the conditional variance $\operatorname{Var}(X \mid Y = y)$.
+   - *Target:* Conditional probability distributions and expectations.
+
+---
 
 ## Proposed Changes
 
-We will modify [suken_1_ultimate_guide.md](file:///C:/Users/kazuo-suyama/.gemini/antigravity/brain/1ee1630b-7539-4f2d-ac0f-546be883fc58/suken_1_ultimate_guide.md) to append 6 new problems and detailed explanations under their respective existing fields. We will also update the Table of Contents at the beginning of the file.
+### 1. Update Parser Script `scratch/parse_mocks.js`
+- **[MODIFY]** [parse_mocks.js](file:///C:/Users/kazuo-suyama/.gemini/antigravity/brain/58520328-496d-4add-9d61-ac6c000109b3/scratch/parse_mocks.js)
+  - Append the 4 new problems to the end of the `EXTRA_PROBLEMS` array.
 
-### Summary of New Problems
-
-1. **线形代数 (Linear Algebra)**
-   * **【問題1-4】2次形式と正定値性（シルベスターの基準）**
-     * *Problem:* Find the parameter range of $a$ for which the quadratic form $q(x,y,z) = x^2 + 2axy + y^2 + 2ayz + z^2$ is positive definite.
-     * *Purpose:* To cover Sylvester's criterion on principal minors for positive definiteness.
-
-2. **微分積分学 (Calculus)**
-   * **【問題2-4】フーリエ級数展開と無限級数の和 ($\zeta(2) = \pi^2/6$)**
-     * *Problem:* Expand $f(x) = x^2$ on $[-\pi, \pi]$ as a Fourier series and evaluate the Basel problem sum $\sum_{n=1}^{\infty} \frac{1}{n^2}$.
-     * *Purpose:* To cover Fourier series expansion, periodic boundary extensions, and infinite series evaluation.
-
-3. **微分方程式 (Differential Equations)**
-   * **【問題3-3】ベルヌーイの微分方程式**
-     * *Problem:* Solve the non-linear first-order ODE $y' + \frac{y}{x} = x y^2 \quad (x > 0)$.
-     * *Purpose:* To cover standard non-linear ODE techniques using substitutions ($u = y^{1-n}$).
-
-4. **複素解析 (Complex Analysis)**
-   * **【問題4-3】複素関数のローラン展開**
-     * *Problem:* Find the Laurent series of $f(z) = \frac{1}{z(z-2)}$ in regions (i) $0 < |z| < 2$ and (ii) $|z| > 2$.
-     * *Purpose:* To cover Laurent expansions in different annular domains around a singularity.
-
-5. **代数学・整数論 (Algebra & Number Theory)**
-   * **【問題7-3】多項式環の剰余環と体の同型（第一同型定理）**
-     * *Problem:* Prove that the quotient ring $\mathbb{R}[x]/(x^2+1)$ is isomorphic to the complex field $\mathbb{C}$.
-     * *Purpose:* To cover ring homomorphisms, ideal definitions, quotient rings, and the First Isomorphism Theorem for rings.
-
-6. **確率・統計 (Probability & Statistics)**
-   * **【問題8-4】2次元連続型確率変数の同時分布・周辺分布・共分散**
-     * *Problem:* Given joint PDF $f(x,y) = c(x+y)$ on $[0, 1] \times [0, 1]$, (i) find $c$, (ii) find marginals, (iii) check independence, (iv) find covariance.
-     * *Purpose:* To cover joint densities, marginal integrals, variable independence, and expectations/covariance calculations.
+### 2. Update Validator Script `scratch/verify_mocks.js`
+- **[MODIFY]** [verify_mocks.js](file:///C:/Users/kazuo-suyama/.gemini/antigravity/brain/58520328-496d-4add-9d61-ac6c000109b3/scratch/verify_mocks.js)
+  - Update the expected total problems assertion from 112 to **116**.
 
 ---
 
 ## Verification Plan
 
+### Automated Verification
+Run the parser and validator using Node.js:
+1. Generate the files: `node C:\Users\kazuo-suyama\.gemini\antigravity\brain\58520328-496d-4add-9d61-ac6c000109b3\scratch\parse_mocks.js`
+2. Verify correctness: `node C:\Users\kazuo-suyama\.gemini\antigravity\brain\58520328-496d-4add-9d61-ac6c000109b3\scratch\verify_mocks.js`
+   - Checks total count is exactly 116.
+   - Verifies LaTeX `$$` markers are correctly paired and balanced.
+3. Regenerate the titles list:
+   - Run the list generator script to refresh `titles.txt`.
+
 ### Manual Verification
-1. **Mathematical Check:** Individually recalculate and verify all calculations, coefficients, bounds, and algebraic steps for all 6 new problems to ensure 100% mathematical accuracy.
-2. **Markdown Rendering Check:** Check the formatting of LaTeX expressions and Markdown headings inside the updated file.
+1. Inspect the updated markdown files in [mock_by_category](file:///c:/Projects/mathcert1/mock_by_category) to ensure readability and formatting.
